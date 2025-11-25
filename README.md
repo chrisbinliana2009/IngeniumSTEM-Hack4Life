@@ -132,6 +132,62 @@ This approach is:
 Today, there is still **no dedicated, humane safety device** designed specifically for people working inside forests, forest-fringe communities, or for tracking people during wildlife-related emergencies.
 
 The **Eco-Alert Torch** aims to fill this long-standing gap in safety technology — delivering a practical, STEM-powered solution that protects **both humans and wildlife**.
+UN Sustainable Development Goals (SDG) Alignment
+Our project aligns strongly with 6 major SDGs, and partially with several others.
+Here is a clear, judge-friendly SDG mapping:
+
+SDG 3 — Good Health & Well-Being
+How your project aligns:
+•	Protects people in forest-fringe areas from dangerous wildlife encounters.
+•	Reduces night-time fear, stress, and accidents.
+•	Eliminates unsafe traditional methods like fire, crackers, or makeshift traps.
+•	Provides a safe, non-harmful way to increase community safety.
+✔ Promotes mental and physical safety
+✔ Reduces injuries and harmful practices
+ SDG 11 — Sustainable Cities & Communities
+How your project aligns:
+•	Supports rural and forest-edge communities with smart safety technology.
+•	Strengthens community resilience during wildlife emergencies.
+•	Encourages safer coexistence between humans and nature.
+✔ Builds safer, more resilient villages
+✔ Enhances local disaster risk reduction
+ SDG 13 — Climate Action
+How your project aligns:
+•	Replaces fire-based deterrence methods—reducing smoke, forest fire risk, and carbon emissions.
+•	Uses rechargeable batteries, low power consumption, and can integrate solar charging.
+•	Reduces need for crackers that cause heavy CO₂ release.
+✔ Prevents forest fires
+✔ Environmentally low-impact safety tool
+ SDG 14 — Life Below Water (Indirect)
+While not directly related, reducing forest fires and pollution prevents ash and toxins from reaching water bodies and aquatic ecosystems.
+✔ Supports healthier ecosystems indirectly
+
+ SDG 15 — Life on Land (Strongest Match)
+How your project aligns:
+•	Protects wildlife by using 100% non-harmful deterrence methods.
+•	Reduces animal stress, injury, and retaliation from humans.
+•	Helps avoid conflict behaviors that can harm elephants, deer, wild boars, and community animals.
+•	Introduces AI-based detection to prevent unnecessary disturbance.
+✔ Prevents harm to wildlife
+✔ Supports biodiversity
+✔ Enables peaceful coexistence
+ SDG 9 — Industry, Innovation & Infrastructure
+How your project aligns:
+•	Built using STEM principles (electronics, sensors, logic, mechanical design).
+•	Uses innovation (LED flame simulation + blower + safe sound patterns).
+•	Offers a replicable, scalable model for community-level safety tech.
+✔ Promotes student-led innovation
+✔ Demonstrates affordable engineering solutions
+ Additional SDG Connections
+SDG 1 — No Poverty (Indirect)
+•	Prevents crop damage and financial loss caused by wildlife.
+•	Protects livestock and avoids economic loss for low-income families.
+SDG 4 — Quality Education
+•	Created by school students using STEM learning.
+•	Can be turned into a STEM learning kit for other students.
+SDG 7 — Affordable & Clean Energy
+•	Uses rechargeable battery and can integrate solar charging.
+
 
 
 Try it out Video https://youtu.be/yz2kcooeCaM
