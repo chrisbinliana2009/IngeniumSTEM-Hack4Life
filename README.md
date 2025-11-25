@@ -110,6 +110,29 @@ Community-level alert network
 Long-term field testing with forest-fringe villages
 
 Creating a STEM student kit so schools can build it easily
+## 🧭 Safety, Ethics, and Wildlife Protection
+
+To ensure complete safety, the **Eco-Alert Torch** system is designed around strict animal-welfare and ethical guidelines:
+
+- Uses only **non-harmful deterrence** — no real fire, no explosives, no traps, and no electric fencing.  
+- Light and sound patterns are designed to stay within **wildlife-safe limits**, preventing pain or long-term stress.  
+- Planned AI features focus on **reducing false alarms**, helping distinguish normal animal movement from human activity.  
+- **Community consent and privacy** are respected through anonymised data and secure storage of any images or alerts.  
+- Deployment at scale will be guided by **wildlife experts and forest officials** to ensure responsible, legal, and ethical implementation.
+
+### ✔ Ethical and Safe by Design
+
+This approach is:
+
+- ✔ **Non-harmful and ethically responsible**  
+- ✔ **Scientifically aligned** with natural animal behaviour  
+- ✔ **Far safer** than crackers, open flames, or electric fencing  
+- ✔ **Future-ready**, with full automation possible using AI + IoT  
+
+Today, there is still **no dedicated, humane safety device** designed specifically for people working inside forests, forest-fringe communities, or for tracking people during wildlife-related emergencies.
+
+The **Eco-Alert Torch** aims to fill this long-standing gap in safety technology — delivering a practical, STEM-powered solution that protects **both humans and wildlife**.
+
 
 Try it out Video https://youtu.be/yz2kcooeCaM
 Demo Video https://youtu.be/ReLTamfFB6Q
