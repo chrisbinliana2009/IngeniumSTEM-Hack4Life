@@ -317,3 +317,169 @@ void loop() {
     active = false;
   }
 }
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill:#f9f9f9; stroke:#333; stroke-width:2; }
+    .label { font-family:Arial, sans-serif; font-size:18px; fill:#111; }
+    .small { font-size:14px; fill:#333; }
+    .power { stroke:#d33; stroke-width:3; fill:none; marker-end:url(#arrow); }
+    .signal { stroke:#337; stroke-width:2; fill:none; marker-end:url(#arrow); stroke-dasharray:6 4; }
+    .ground { stroke:#555; stroke-width:2; fill:none; marker-end:url(#arrow); stroke-dasharray:3 3; }
+    .note { font-size:12px; fill:#555; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" class="label" font-weight="bold">
+    Eco-Alert Torch / Ingenium STEM Hack4Life – System Schematic (12 V + 5 V)
+  </text>
+  <text x="600" y="65" text-anchor="middle" class="small">
+    AC adapter + 12 V battery input, regulators, LED/laser drivers, blower, speaker amp, USB control
+  </text>
+
+  <!-- Reflector section -->
+  <rect x="800" y="120" width="320" height="280" class="box"/>
+  <text x="960" y="145" text-anchor="middle" class="label" font-weight="bold">Reflector assembly</text>
+  <text x="960" y="170" text-anchor="middle" class="small">Silk cloth diffuser above reflector</text>
+
+  <!-- Laser module -->
+  <rect x="820" y="190" width="130" height="60" class="box"/>
+  <text x="885" y="220" text-anchor="middle" class="small">Laser module</text>
+
+  <!-- LED module -->
+  <rect x="970" y="190" width="130" height="60" class="box"/>
+  <text x="1035" y="220" text-anchor="middle" class="small">High-power LED</text>
+
+  <!-- Blower -->
+  <rect x="895" y="270" width="130" height="60" class="box"/>
+  <text x="960" y="300" text-anchor="middle" class="small">Blower / fan</text>
+
+  <!-- Power area -->
+  <rect x="60" y="120" width="360" height="260" class="box"/>
+  <text x="240" y="145" text-anchor="middle" class="label" font-weight="bold">Power inputs</text>
+
+  <!-- AC Adapter -->
+  <rect x="80" y="180" width="150" height="60" class="box"/>
+  <text x="155" y="210" text-anchor="middle" class="small">AC adapter 12 V DC</text>
+
+  <!-- 12V Battery -->
+  <rect x="250" y="180" width="150" height="60" class="box"/>
+  <text x="325" y="210" text-anchor="middle" class="small">12 V battery</text>
+
+  <!-- OR selector note -->
+  <text x="240" y="260" text-anchor="middle" class="note">Use DC jack + battery OR’ing (ideal diode)</text>
+
+  <!-- Protection & distribution -->
+  <rect x="60" y="420" width="360" height="160" class="box"/>
+  <text x="240" y="445" text-anchor="middle" class="label" font-weight="bold">Protection & regulation</text>
+
+  <!-- Fuse -->
+  <rect x="80" y="480" width="90" height="40" class="box"/>
+  <text x="125" y="505" text-anchor="middle" class="small">Fuse</text>
+
+  <!-- Reverse protection -->
+  <rect x="180" y="480" width="90" height="40" class="box"/>
+  <text x="225" y="505" text-anchor="middle" class="small">Ideal diode</text>
+
+  <!-- 12V rail -->
+  <rect x="280" y="460" width="120" height="40" class="box"/>
+  <text x="340" y="485" text-anchor="middle" class="small">12 V rail</text>
+
+  <!-- 5V buck regulator -->
+  <rect x="280" y="510" width="120" height="40" class="box"/>
+  <text x="340" y="535" text-anchor="middle" class="small">5 V buck</text>
+
+  <!-- Control section -->
+  <rect x="460" y="120" width="320" height="320" class="box"/>
+  <text x="620" y="145" text-anchor="middle" class="label" font-weight="bold">USB device & control</text>
+
+  <!-- USB/microcontroller -->
+  <rect x="480" y="180" width="150" height="60" class="box"/>
+  <text x="555" y="210" text-anchor="middle" class="small">USB device (ESP32/MCU)</text>
+
+  <!-- PIR sensor -->
+  <rect x="630" y="180" width="130" height="60" class="box"/>
+  <text x="695" y="210" text-anchor="middle" class="small">PIR / radar sensor</text>
+
+  <!-- Audio amp -->
+  <rect x="480" y="260" width="150" height="60" class="box"/>
+  <text x="555" y="290" text-anchor="middle" class="small">Audio amplifier</text>
+
+  <!-- MOSFET drivers -->
+  <rect x="630" y="260" width="130" height="60" class="box"/>
+  <text x="695" y="290" text-anchor="middle" class="small">MOSFET drivers (LED / laser)</text>
+
+  <!-- Speaker -->
+  <rect x="480" y="340" width="150" height="60" class="box"/>
+  <text x="555" y="370" text-anchor="middle" class="small">Speaker</text>
+
+  <!-- Notes block -->
+  <rect x="60" y="620" width="1060" height="200" class="box"/>
+  <text x="80" y="650" class="small">Notes:</text>
+  <text x="80" y="675" class="note">• Power input: combine AC adapter and 12 V battery via ideal-diode OR (e.g., LTC4412 or dual Schottky) with a fuse.</text>
+  <text x="80" y="695" class="note">• 12 V rail feeds blower and high-power LED driver if needed; 5 V buck feeds MCU/USB, sensors, and low-power modules.</text>
+  <text x="80" y="715" class="note">• Use logic-level N-MOSFETs (e.g., IRLZ44N) for LED/laser switching with gate resistors and flyback diode if inductive loads are present.</text>
+  <text x="80" y="735" class="note">• Audio path: MCU PWM or DAC -> low-power audio amp (e.g., PAM8403) -> speaker. Include series RC for click suppression.</text>
+  <text x="80" y="755" class="note">• Ground: star-grounds at power entry; separate high-current LED/blower returns from sensitive USB/MCU ground where possible.</text>
+  <text x="80" y="775" class="note">• Safety: keep laser low-power, add current limiting; never point at eyes. Use fusing and proper wire gauge.</text>
+
+  <!-- Connections -->
+
+  <!-- AC adapter to protection -->
+  <line x1="230" y1="210" x2="230" y2="460" class="power"/>
+  <text x="235" y="340" class="note">12 V</text>
+
+  <!-- Battery to protection -->
+  <line x1="325" y1="240" x2="325" y2="460" class="power"/>
+
+  <!-- Protection path -->
+  <line x1="170" y1="500" x2="180" y2="500" class="power"/>
+  <line x1="270" y1="500" x2="280" y2="480" class="power"/>
+  <line x1="280" y1="530" x2="400" y2="530" class="power"/>
+  <text x="405" y="535" class="note">5 V</text>
+
+  <!-- 12 V rail distribution -->
+  <line x1="400" y1="480" x2="840" y2="480" class="power"/>
+  <text x="845" y="485" class="note">12 V rail to blower & LED driver</text>
+
+  <!-- 5 V rail to control -->
+  <line x1="400" y1="530" x2="540" y2="530" class="power"/>
+  <line x1="540" y1="530" x2="540" y2="240" class="power"/>
+  <text x="545" y="245" class="note">5 V to MCU/USB</text>
+
+  <!-- MCU signals -->
+  <line x1="555" y1="240" x2="690" y2="240" class="signal"/>
+  <text x="622" y="230" class="note">GPIO to MOSFET drivers</text>
+
+  <line x1="555" y1="240" x2="555" y2="320" class="signal"/>
+  <line x1="555" y1="320" x2="555" y2="340" class="signal"/>
+  <text x="560" y="330" class="note">Audio out to amp</text>
+
+  <line x1="695" y1="240" x2="885" y2="220" class="signal"/>
+  <text x="790" y="212" class="note">Laser control</text>
+
+  <line x1="695" y1="240" x2="1035" y2="220" class="signal"/>
+  <text x="900" y="235" class="note">LED control</text>
+
+  <!-- Blower 12 V -->
+  <line x1="960" y1="330" x2="960" y2="480" class="power"/>
+  <text x="965" y="410" class="note">12 V</text>
+
+  <!-- Ground bus -->
+  <line x1="60" y1="590" x2="1120" y2="590" class="ground"/>
+  <text x="1080" y="585" class="note">GND</text>
+
+  <!-- Ground drops -->
+  <line x1="155" y1="240" x2="155" y2="590" class="ground"/>
+  <line x1="325" y1="240" x2="325" y2="590" class="ground"/>
+  <line x1="540" y1="320" x2="540" y2="590" class="ground"/>
+  <line x1="960" y1="330" x2="960" y2="590" class="ground"/>
+
+  <!-- Labels: silk cloth -->
+  <text x="960" y="105" text-anchor="middle" class="small">Silk cloth (diffuser above reflector)</text>
+</svg>
