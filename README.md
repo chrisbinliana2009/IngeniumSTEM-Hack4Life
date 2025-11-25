@@ -192,3 +192,128 @@ SDG 7 — Affordable & Clean Energy
 
 Try it out Video https://youtu.be/yz2kcooeCaM
 Demo Video https://youtu.be/ReLTamfFB6Q
+
+// Eco-Alert Torch v0.1 (ESP32)
+// Features: red strobe, artificial flame, safe alert tones, simple motion trigger
+// Hardware: ESP32, WS2812/Neopixel strip (flame), high-power red LED via MOSFET, piezo/buzzer, PIR sensor
+
+#include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+
+// ---------------- Hardware pins ----------------
+#define PIN_FLAME        5    // Neopixel data pin
+#define NUM_PIXELS       24   // adjust to your strip
+#define PIN_STROBE_LED   18   // MOSFET gate driving high-power red LED
+#define PIN_BUZZER       19   // piezo/buzzer
+#define PIN_PIR          23   // motion sensor
+
+// ---------------- Safety/limits ----------------
+// Keep duty cycles conservative to avoid wildlife stress.
+#define STROBE_ON_MS     60
+#define STROBE_OFF_MS    140
+#define STROBE_BURST_CT  5    // short bursts only
+
+#define ALERT_TONE_FREQ1 1200 // Hz
+#define ALERT_TONE_FREQ2 900
+#define ALERT_TONE_MS    120
+#define ALERT_PAUSE_MS   180
+#define ALERT_REPEAT     6
+
+// ---------------- Flame effect ----------------
+Adafruit_NeoPixel strip(NUM_PIXELS, PIN_FLAME, NEO_GRB + NEO_KHZ800);
+
+// Simple noise for flame flicker
+uint8_t rand8() { return (uint8_t)random(0, 255); }
+
+void flameFrame(uint8_t baseRed = 255, uint8_t baseGreen = 60, uint8_t baseBlue = 0) {
+  // Per-pixel warm flicker with subtle variability
+  for (int i = 0; i < NUM_PIXELS; i++) {
+    int heat = 180 + (rand8() % 60);          // 180–239
+    int flicker = (rand8() % 50) - 25;        // -25..24
+    int r = constrain(baseRed   + flicker, 120, 255);
+    int g = constrain(baseGreen + flicker/2,  20, 140);
+    int b = constrain(baseBlue  + flicker/3,   0,  60);
+
+    // “breathing” brightness along the strip
+    int brightness = constrain(heat, 160, 255);
+    strip.setPixelColor(i, strip.Color((r * brightness) / 255,
+                                       (g * brightness) / 255,
+                                       (b * brightness) / 255));
+  }
+  strip.show();
+}
+
+// ---------------- Alert tones ----------------
+void playTone(uint16_t freq, uint16_t durMs) {
+  // ESP32: use LEDC for tone generation on PIN_BUZZER
+  ledcAttachPin(PIN_BUZZER, 0);
+  ledcSetup(0, freq, 10); // channel 0, frequency, 10-bit resolution
+  ledcWrite(0, 512);      // ~50% duty
+  delay(durMs);
+  ledcWrite(0, 0);
+}
+
+void safeAlertPattern() {
+  for (int i = 0; i < ALERT_REPEAT; i++) {
+    playTone(ALERT_TONE_FREQ1, ALERT_TONE_MS);
+    delay(ALERT_PAUSE_MS);
+    playTone(ALERT_TONE_FREQ2, ALERT_TONE_MS);
+    delay(ALERT_PAUSE_MS);
+  }
+}
+
+// ---------------- Red strobe ----------------
+void redStrobeBurst() {
+  for (int i = 0; i < STROBE_BURST_CT; i++) {
+    digitalWrite(PIN_STROBE_LED, HIGH);
+    delay(STROBE_ON_MS);
+    digitalWrite(PIN_STROBE_LED, LOW);
+    delay(STROBE_OFF_MS);
+  }
+}
+
+// ---------------- Setup ----------------
+void setup() {
+  randomSeed(esp_random());
+  pinMode(PIN_STROBE_LED, OUTPUT);
+  pinMode(PIN_PIR, INPUT);
+  strip.begin();
+  strip.setBrightness(200); // keep below max to reduce glare/stress
+  strip.show();
+
+  // Initial warm-up flame
+  for (int i = 0; i < 60; i++) {
+    flameFrame();
+    delay(50);
+  }
+}
+
+// ---------------- Loop ----------------
+unsigned long lastFlameUpdate = 0;
+const uint16_t flameIntervalMs = 40;
+
+void loop() {
+  // Continuous flame effect
+  unsigned long now = millis();
+  if (now - lastFlameUpdate >= flameIntervalMs) {
+    flameFrame();
+    lastFlameUpdate = now;
+  }
+
+  // Motion-triggered deterrence
+  static bool active = false;
+  int motion = digitalRead(PIN_PIR);
+
+  if (motion && !active) {
+    active = true;
+    // Sequence: short strobe -> safe alert tones -> resume flame
+    redStrobeBurst();
+    safeAlertPattern();
+  }
+
+  // Cool-down period to avoid over-stimulation
+  if (active) {
+    delay(1500);
+    active = false;
+  }
+}
